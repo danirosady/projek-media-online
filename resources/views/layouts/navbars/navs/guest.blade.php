@@ -24,7 +24,7 @@
                 </li>
                 <li class="nav-item  active ">
                     <a href="{{ route('login') }}" class="nav-link">
-                    <i class="nc-icon nc-tap-01"></i>{{ __('Masuk') }}
+                    <i class="nc-icon nc-tap-01"></i>{{ __('Masuks') }}
                     </a>
                 </li>
             </ul>
