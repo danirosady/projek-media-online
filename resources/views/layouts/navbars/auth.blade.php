@@ -23,6 +23,24 @@
                     <p>{{ __('Karyawan') }}</p>
                 </a>
             </li>
+            <li class="{{ $elementActive == 'admin' ? 'active' : '' }}">
+                <a href="{{ route('page.index', 'admin') }}">
+                    <i class="nc-icon nc-badge"></i>
+                    <p>{{ __('Admin') }}</p>
+                </a>
+            </li>
+            <li class="{{ $elementActive == 'kategori' ? 'active' : '' }}">
+                <a href="{{ route('page.index', 'kategori') }}">
+                    <i class="nc-icon nc-badge"></i>
+                    <p>{{ __('Kategori') }}</p>
+                </a>
+            </li>
+            <li class="{{ $elementActive == 'berita' ? 'active' : '' }}">
+                <a href="{{ route('page.index', 'berita') }}">
+                    <i class="nc-icon nc-badge"></i>
+                    <p>{{ __('Berita') }}</p>
+                </a>
+            </li>
         </ul>
     </div>
 </div>
