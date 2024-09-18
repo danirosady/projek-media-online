@@ -5,6 +5,11 @@
 
 @section('content')
     <div class="content">
+        @session('error')
+        <div class="alert alert-danger" role="alert">
+            {{ $value }}
+        </div>
+        @endsession
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="card card-stats">
