@@ -39,14 +39,14 @@ Route::post('/karyawan/update/{id}',[KaryawanController::class,'update'])->name(
 Route::get('/karyawan/hapus/{id}',[KaryawanController::class,'hapus'])->name('karyawan.hapus');
 
 //Admin
-
+Route::group(['middleware' => 'role-check:superadmin'], function () {
     Route::get('/admin',[AdminController::class,'index'])->name('admin');
     Route::get('/admin/tambah',[AdminController::class,'tambah'])->name('admin.tambah');
     Route::put('/admin/simpan',[AdminController::class,'simpan'])->name('admin.simpan');
     Route::get('/admin/edit/{id}',[AdminController::class,'edit'])->name('admin.edit');
     Route::post('/admin/update/{id}',[AdminController::class,'update'])->name('admin.update');
     Route::get('/admin/hapus/{id}',[AdminController::class,'hapus'])->name('admin.hapus');
-
+});
 
 //Kategori
 Route::get('/kategori',[KategoriController::class,'index'])->name('kategori');
