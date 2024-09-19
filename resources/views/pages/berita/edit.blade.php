@@ -69,35 +69,6 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <label class="col-md-2 col-form-label text-right">{{ __('Atribut  :') }}</label>
-                                <div class="col-md-9">
-                                    <div class="form-group text-left ml-2">
-                                        <div class="col-md-6">
-                                            <input class="form-check-input" type="checkbox" name="headline" id="headline">
-                                            <label class="form-check-label" for="headline">
-                                                {{ __('Headline') }}
-                                            </label>
-                                        </div>
-                                        @if ($errors->has('berita_pilihan'))
-                                            <span class="invalid-feedback" style="display: block;" role="alert">
-                                                <strong>{{ $errors->first('berita_pilihan') }}</strong>
-                                            </span>
-                                        @endif
-                                        <div class="col-md-6">
-                                            <input class="form-check-input" type="checkbox" name="berita_pilihan" id="berita_pilihan">
-                                            <label class="form-check-label" for="berita_pilihan">
-                                                {{ __('Berita Pilihan') }}
-                                            </label>
-                                        </div>
-                                        @if ($errors->has('headline'))
-                                            <span class="invalid-feedback" style="display: block;" role="alert">
-                                                <strong>{{ $errors->first('headline') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
                                 <label class="col-md-2 col-form-label text-right">{{ __('Gambar:') }}</label>
                                 <div class="col-md-9">
                                     <div class="form-control-file">
