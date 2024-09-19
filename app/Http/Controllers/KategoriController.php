@@ -26,7 +26,7 @@ class KategoriController extends Controller
     public function hapus($id_kategori){
         $data_kategori = KategoriModel::where('id', $id_kategori)->delete();
 
-        return redirect('kategori')->with('success', 'Berhasil menghapus data');
+        return redirect('kat')->with('success', 'Berhasil menghapus data');
     }
 
     public function update(Request $request, $id_kategori){
@@ -35,7 +35,7 @@ class KategoriController extends Controller
         $save_kat->slug    = strtolower(str_replace(' ', '-', $request->nama));
         $save_kat->save();
 
-        return redirect('kategori')->with('success', 'Berhasil mengubah data');
+        return redirect('kat')->with('success', 'Berhasil mengubah data');
     }
 
     public function simpan(Request $request){
@@ -43,6 +43,6 @@ class KategoriController extends Controller
         $save_data->nama_kategori    = $request->nama;
         $save_data->slug             = strtolower(str_replace(' ', '-', $request->nama));
         $save_data->save();
-        return redirect('kategori')->with('success', 'Berhasil menyimpan data');
+        return redirect('kat')->with('success', 'Berhasil menyimpan data');
     }
 }
