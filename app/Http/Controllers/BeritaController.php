@@ -10,7 +10,10 @@ use Illuminate\Support\Facades\Auth;
 class BeritaController extends Controller
 {
     public function index(){
-        $list_berita = BeritaModel::get();
+            $list_berita = BeritaModel::leftJoin('kategori', 'berita.kategori_berita', 'kategori.id')
+                ->leftJoin('users', 'berita.author', 'users.id')
+                ->select('berita.*', 'kategori.nama_kategori')
+                ->get();
 
         return view('pages.berita.list', ['list_berita' => $list_berita]);
     }
@@ -37,9 +40,11 @@ class BeritaController extends Controller
 
         $save_data = BeritaModel::where('id', $id_berita)->first();
 
-        if ($request-> gamber != null) {
+        if ($request->gambar != null) {
             //hapus gambar lama
-            unlink(public_path('img/'. $save_data->gambar));
+            if (file_exists(public_path('img/'. $save_data->gambar))) {
+                unlink(public_path('img/'. $save_data->gambar));
+            }
             //simpan data gambar
             $imageName = $request->kategori_berita.'_'.time().'.'.$request->gambar->extension();
             $request->gambar->move(public_path('img'), $imageName);
