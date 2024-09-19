@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\KategoriController;
 use Illuminate\Support\Facades\Auth;
@@ -19,9 +20,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+//Frontend
+Route::get('/',[HomePageController::class, 'index']);
+Route::get('/detail/{slug_berita}',[HomePageController::class, 'detail_berita']);
+Route::get('/kategori/{slug_kategori}',[HomePageController::class, 'kategori']);
+Route::get('/indeks-berita',[HomePageController::class, 'indeks_berita']);
+Route::post('/search/{search_type}',[HomePageController::class, 'search']);
 
 Auth::routes();
 
@@ -49,12 +57,12 @@ Route::group(['middleware' => 'role-check:superadmin'], function () {
 });
 
 //Kategori
-Route::get('/kategori',[KategoriController::class,'index'])->name('kategori');
-Route::get('/kategori/tambah',[KategoriController::class,'tambah'])->name('kategori.tambah');
-Route::put('/kategori/simpan',[KategoriController::class,'simpan'])->name('kategori.simpan');
-Route::get('/kategori/edit/{id}',[KategoriController::class,'edit'])->name('kategori.edit');
-Route::post('/kategori/update/{id}',[KategoriController::class,'update'])->name('kategori.update');
-Route::get('/kategori/hapus/{id}',[KategoriController::class,'hapus'])->name('kategori.hapus');
+Route::get('/kat',[KategoriController::class,'index'])->name('kategori');
+Route::get('/kat/tambah',[KategoriController::class,'tambah'])->name('kategori.tambah');
+Route::put('/kat/simpan',[KategoriController::class,'simpan'])->name('kategori.simpan');
+Route::get('/kat/edit/{id}',[KategoriController::class,'edit'])->name('kategori.edit');
+Route::post('/kat/update/{id}',[KategoriController::class,'update'])->name('kategori.update');
+Route::get('/kat/hapus/{id}',[KategoriController::class,'hapus'])->name('kategori.hapus');
 
 //Berita
 Route::get('/berita',[BeritaController::class,'index'])->name('berita');
