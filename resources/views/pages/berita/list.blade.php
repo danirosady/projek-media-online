@@ -5,6 +5,11 @@
 
 @section('content')
     <div class="content">
+        @session('error')
+        <div class="alert alert-danger" role="alert">
+            {{ $value }}
+        </div>
+        @endsession
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -33,79 +38,85 @@
                     @endsession
 
                         <div class="table">
-                            <table class="table">
+                            <table class="table table-bordered table-hover">
                                 <thead class=" text-primary">
-                                    <th>
+                                    <th class=" text-center">
+                                        No
+                                    </th>
+                                    <th class=" text-center">
                                         Judul
                                     </th>
-                                    <th>
+                                    <th class=" text-center">
                                         Konten
                                     </th>
-                                    <th>
+                                    <th class=" text-center">
                                         Kategori
                                     </th>
-                                    <th>
+                                    <th class=" text-center">
                                         Headline/Pilihan
                                     </th>
-                                    <th>
+                                    <th class=" text-center">
                                         Gambar
-                                    </th>
-                                    <th class="text-center">
+                                    </th class=" text-center">
+                                    <th class="text-center" style="width: 200px;" >
                                         Aksi
                                     </th>
                                 </thead>
                                 <tbody>
                                     @foreach ($list_berita as $berita)
                                     <tr>
+                                        <td class="text-center">
+                                            {{ $loop->iteration }}
+                                        </td>
                                         <td>
                                             {{ $berita->judul_berita }}
                                         </td>
                                         <td>
-                                            {{ $berita->konten_berita }}
+                                            {{ Str::limit(strip_tags($berita->konten_berita), 120) }}
                                         </td>
-                                        <td>
-                                            {{ $berita->kategori_berita }}
+                                        <td class="text-center">
+                                            {{ $berita->nama_kategori }}
                                         </td>
                                         <td>
                                             @if ($berita->is_headline == 'no')
                                                 <a href="{{ route('berita.headline', ['id_berita' => $berita->id, 'status' => 'yes']) }}">
-                                                    <div class="badge badge-light me-3">{{ $berita->is_headline }}</div>
+                                                    <div class="badge h6 badge-light me-3">{{ $berita->is_headline }}</div>
                                                 </a>
                                              @else
                                                 <a href="{{ route('berita.headline', ['id_berita' => $berita->id, 'status' => 'no']) }}">
-                                                    <div class="badge badge-info me-3">{{ $berita->is_headline }}</div>
+                                                    <div class="badge h6 badge-info me-3">{{ $berita->is_headline }}</div>
                                                 </a>
                                                 @endif
                                             /
                                             @if ($berita->is_berita_pilihan == 'no')
                                                 <a href="{{ route('berita.pilihan', ['id_berita' => $berita->id, 'status' => 'yes']) }}">
-                                                    <div class="badge badge-light me-3">{{ $berita->is_berita_pilihan }}</div>
+                                                    <div class="badge h6 badge-light me-3">{{ $berita->is_berita_pilihan }}</div>
                                                 </a>
                                              @else
                                                 <a href="{{ route('berita.pilihan', ['id_berita' => $berita->id, 'status' => 'no']) }}">
-                                                    <div class="badge badge-info me-3">{{ $berita->is_berita_pilihan }}</div>
+                                                    <div class="badge h6 badge-info me-3">{{ $berita->is_berita_pilihan }}</div>
                                                 </a>
                                             @endif
                                         </td>
                                         <td>
-                                            {{ $berita->gambar }}
+                                            <div>
+                                                <img src="{{ asset('img') }}/{{ $berita->gambar }}">
+                                            </div>
                                         </td>
                                         <td class="text-right">
-                                            <div class="row float-center">
-                                                <div class="col-lg-6">
+                                                <div class="m-1">
                                                     <a href="{{ route('berita.edit', ['id' => $berita->id])   }}">
                                                         <button class="btn btn-info btn-block my-1">
                                                         <span class="nc-icon nc-ruler-pencil text-white"></span>
                                                         Ubah</button>
                                                     </a>
                                                 </div>
-                                                <div class="col-lg-6">
+                                                <div class="m-1">
                                                     <a href="{{ route('berita.hapus', ['id' => $berita->id])   }}">
                                                         <button class="btn btn-danger btn-block my-1">
                                                         <span class="nc-icon nc-simple-remove text-white"></span>
                                                         Hapus</button>
                                                     </a>
-                                                </div>
                                             </div>
                                         </td>
                                     </tr>
