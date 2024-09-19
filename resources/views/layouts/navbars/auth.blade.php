@@ -25,19 +25,19 @@
             </li>
             <li class="{{ $elementActive == 'admin' ? 'active' : '' }}">
                 <a href="{{ route('page.index', 'admin') }}">
-                    <i class="nc-icon nc-badge"></i>
+                    <i class="nc-icon nc-single-02"></i>
                     <p>{{ __('Admin') }}</p>
                 </a>
             </li>
             <li class="{{ $elementActive == 'kategori' ? 'active' : '' }}">
-                <a href="{{ route('page.index', 'kategori') }}">
-                    <i class="nc-icon nc-badge"></i>
+                <a href="{{ route('page.index', 'kat') }}">
+                    <i class="nc-icon nc-bullet-list-67"></i>
                     <p>{{ __('Kategori') }}</p>
                 </a>
             </li>
             <li class="{{ $elementActive == 'berita' ? 'active' : '' }}">
                 <a href="{{ route('page.index', 'berita') }}">
-                    <i class="nc-icon nc-badge"></i>
+                    <i class="nc-icon nc-align-left-2"></i>
                     <p>{{ __('Berita') }}</p>
                 </a>
             </li>
